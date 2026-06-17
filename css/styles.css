@@ -1,0 +1,242 @@
+.carousel-inner {
+    height: 360px;
+}
+
+.carousel-item img {
+    height: 360px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.carousel-caption-box {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.carousel-news-link {
+    color: white;
+    display: block;
+    text-decoration: none;
+}
+
+.carousel-news-link:hover {
+    color: white;
+}
+
+.footer-revealer {
+    width: 100%;
+    transition: 0.5s ease-in-out;
+}
+
+.index-page {
+    background-color: white;
+}
+
+body,
+html {
+    overflow-x: hidden;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.clickable-card {
+    cursor: pointer;
+}
+
+.map-frame {
+    border: 0;
+}
+
+.news-detail-image {
+    height: auto;
+    width: 100%;
+}
+
+.carousel-loading {
+    height: 360px;
+}
+
+.news-source {
+    margin-top: 1.5rem;
+}
+
+.home-hero {
+    background: linear-gradient(135deg, #141821 0%, #243447 55%, #1f5f5b 100%);
+    color: white;
+    padding: 56px 0;
+}
+
+.home-hero h1 {
+    font-size: 3rem;
+    line-height: 1.08;
+}
+
+.home-hero-text {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.15rem;
+}
+
+.home-carousel {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.section-kicker {
+    color: #70d6c9;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.site-summary {
+    background: #f4f7fb;
+    border-left: 5px solid #1f5f5b;
+    border-radius: 8px;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    padding: 1.75rem;
+}
+
+.site-summary h2 {
+    margin-bottom: 0.75rem;
+}
+
+.site-summary p {
+    color: #374151;
+    margin-bottom: 0;
+}
+
+.summary-points {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.summary-points p {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.home-band {
+    background: #f8fafc;
+    padding: 56px 0;
+}
+
+.sport-tile {
+    border-radius: 8px;
+    color: white;
+    display: block;
+    height: 100%;
+    min-height: 190px;
+    padding: 1.4rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sport-tile:hover {
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(17, 24, 39, 0.18);
+}
+
+.sport-tile span {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+}
+
+.sport-tile p {
+    margin: 0;
+}
+
+.sport-football {
+    background: #1d4ed8;
+}
+
+.sport-basketball {
+    background: #b45309;
+}
+
+.sport-running {
+    background: #047857;
+}
+
+.sport-boxing {
+    background: #991b1b;
+}
+
+.news-list-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-list-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(17, 24, 39, 0.12);
+}
+
+.news-list-image {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+}
+
+.news-list-body {
+    padding: 1.25rem;
+}
+
+.news-list-body h2 {
+    font-size: 1.2rem;
+    line-height: 1.35;
+}
+
+.news-list-meta {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.category-filter {
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    color: #334155;
+    padding: 0.5rem 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.category-filter:hover,
+.category-filter.active {
+    background: #1f5f5b;
+    border-color: #1f5f5b;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .site-summary {
+        grid-template-columns: 1fr;
+    }
+}
