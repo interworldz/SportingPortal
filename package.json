@@ -1,10 +1,10 @@
 {
   "name": "sporting-events-in-ukraine",
   "version": "1.0.0",
-  "description": "\\# Спортивний Портал України",
+  "description": "Спортивний Портал України",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --check server.js",
     "start": "node server.js"
   },
   "keywords": [],
