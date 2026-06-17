@@ -6,7 +6,6 @@ const imageElement = document.getElementById('news-image');
 const summaryElement = document.getElementById('news-summary');
 const contentElement = document.getElementById('news-content');
 const sourceElement = document.getElementById('news-source');
-const latestNewsElement = document.getElementById('latest-news');
 
 function showError(message) {
     titleElement.textContent = 'Новину не знайдено';
@@ -67,37 +66,3 @@ if (Number.isInteger(newsId) && newsId >= 0) {
 } else {
     showError('Відсутній або неправильний ідентифікатор новини.');
 }
-
-fetch('/api/news')
-    .then(response => response.json())
-    .then(data => {
-        latestNewsElement.innerHTML = '';
-        data.forEach((item, index) => {
-            const column = document.createElement('div');
-            column.className = 'col';
-
-            const card = document.createElement('a');
-            card.className = 'card h-100 text-decoration-none text-dark';
-            card.href = `news-detail.html?id=${index}`;
-
-            const cardBody = document.createElement('div');
-            cardBody.className = 'card-body';
-
-            const title = document.createElement('h5');
-            title.className = 'card-title';
-            title.textContent = item.title;
-
-            const text = document.createElement('p');
-            text.className = 'card-text';
-            text.textContent = item.text;
-
-            cardBody.append(title, text);
-            card.appendChild(cardBody);
-
-            column.appendChild(card);
-            latestNewsElement.appendChild(column);
-        });
-    })
-    .catch(() => {
-        latestNewsElement.innerHTML = '<p class="text-muted">Не вдалося завантажити список новин.</p>';
-    });

@@ -83,6 +83,36 @@ main {
     margin-top: 1.5rem;
 }
 
+.gallery-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.gallery-card img {
+    aspect-ratio: 16 / 10;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+}
+
+.gallery-card figcaption {
+    color: #111827;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+.gallery-card figcaption span {
+    color: #64748b;
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
 .home-hero {
     background: linear-gradient(135deg, #141821 0%, #243447 55%, #1f5f5b 100%);
     color: white;
