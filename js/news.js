@@ -1,10 +1,16 @@
+const NEWS_PER_PAGE = 3;
+
 fetch('/api/news')
     .then(response => response.json())
     .then(data => {
         const selectedCategory = getSelectedCategory();
+        const filteredNews = getFilteredNews(data, selectedCategory);
+        const currentPage = getCurrentPage(filteredNews.length);
+
         updateNewsHeader(selectedCategory);
         renderCategoryFilters(data, selectedCategory);
-        renderNewsList(data, selectedCategory);
+        renderNewsList(filteredNews, currentPage);
+        renderPagination(filteredNews.length, currentPage, selectedCategory);
     })
     .catch(error => {
         console.error('Помилка:', error);
@@ -15,6 +21,18 @@ fetch('/api/news')
 function getSelectedCategory() {
     const params = new URLSearchParams(window.location.search);
     return params.get('category');
+}
+
+function getCurrentPage(totalItems) {
+    const params = new URLSearchParams(window.location.search);
+    const requestedPage = Number.parseInt(params.get('page'), 10);
+    const totalPages = Math.max(1, Math.ceil(totalItems / NEWS_PER_PAGE));
+
+    if (!Number.isInteger(requestedPage) || requestedPage < 1) {
+        return 1;
+    }
+
+    return Math.min(requestedPage, totalPages);
 }
 
 function updateNewsHeader(selectedCategory) {
@@ -51,11 +69,16 @@ function createFilterLink(label, href, isActive) {
     return link;
 }
 
-function renderNewsList(data, selectedCategory) {
-    const container = document.getElementById('news-list');
-    const filteredNews = data
+function getFilteredNews(data, selectedCategory) {
+    return data
         .map((item, index) => ({ item, index }))
         .filter(({ item }) => !selectedCategory || item.category === selectedCategory);
+}
+
+function renderNewsList(filteredNews, currentPage) {
+    const container = document.getElementById('news-list');
+    const startIndex = (currentPage - 1) * NEWS_PER_PAGE;
+    const pageNews = filteredNews.slice(startIndex, startIndex + NEWS_PER_PAGE);
 
     container.innerHTML = '';
 
@@ -64,7 +87,7 @@ function renderNewsList(data, selectedCategory) {
         return;
     }
 
-    filteredNews.forEach(({ item, index }) => {
+    pageNews.forEach(({ item, index }) => {
         const column = document.createElement('div');
         column.className = 'col-md-6 col-xl-4';
 
@@ -95,4 +118,55 @@ function renderNewsList(data, selectedCategory) {
         column.appendChild(card);
         container.appendChild(column);
     });
+}
+
+function renderPagination(totalItems, currentPage, selectedCategory) {
+    const container = document.getElementById('news-pagination');
+    const totalPages = Math.ceil(totalItems / NEWS_PER_PAGE);
+
+    container.innerHTML = '';
+
+    if (totalPages <= 1) {
+        return;
+    }
+
+    const list = document.createElement('ul');
+    list.className = 'pagination justify-content-center mb-0';
+
+    list.appendChild(createPageItem('Назад', currentPage - 1, selectedCategory, currentPage === 1));
+
+    for (let page = 1; page <= totalPages; page += 1) {
+        list.appendChild(createPageItem(String(page), page, selectedCategory, false, page === currentPage));
+    }
+
+    list.appendChild(createPageItem('Далі', currentPage + 1, selectedCategory, currentPage === totalPages));
+    container.appendChild(list);
+}
+
+function createPageItem(label, page, selectedCategory, isDisabled, isActive = false) {
+    const item = document.createElement('li');
+    item.className = `page-item${isDisabled ? ' disabled' : ''}${isActive ? ' active' : ''}`;
+
+    const link = document.createElement('a');
+    link.className = 'page-link';
+    link.href = isDisabled ? '#' : buildNewsUrl(selectedCategory, page);
+    link.textContent = label;
+
+    item.appendChild(link);
+    return item;
+}
+
+function buildNewsUrl(selectedCategory, page) {
+    const params = new URLSearchParams();
+
+    if (selectedCategory) {
+        params.set('category', selectedCategory);
+    }
+
+    if (page > 1) {
+        params.set('page', page);
+    }
+
+    const query = params.toString();
+    return query ? `news.html?${query}` : 'news.html';
 }

@@ -255,6 +255,16 @@ html {
     color: white;
 }
 
+.news-pagination .page-link {
+    color: #1f5f5b;
+}
+
+.news-pagination .active .page-link {
+    background-color: #1f5f5b;
+    border-color: #1f5f5b;
+    color: white;
+}
+
 @media (max-width: 768px) {
     .site-summary {
         grid-template-columns: 1fr;
