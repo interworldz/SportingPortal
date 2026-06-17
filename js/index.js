@@ -1,9 +1,18 @@
 fetch('/api/news')
     .then(response => response.json())
     .then(data => {
+        updateNewsCounter(data);
         renderCarousel(data);
     })
     .catch(error => console.error('Помилка:', error));
+
+function updateNewsCounter(data) {
+    const counter = document.getElementById('home-news-count');
+
+    if (counter) {
+        counter.textContent = data.length;
+    }
+}
 
 function renderCarousel(data) {
     const carouselContainer = document.getElementById('carousel-container');
