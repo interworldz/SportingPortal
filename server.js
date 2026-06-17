@@ -116,15 +116,6 @@ const news = [
   }
 ];
 
-app.get('/api/menu', (req, res) => {
-  res.json([
-    { title: "Про сайт", url: "about.html" },
-    { title: "Галерея", url: "gallery.html" },
-    { title: "Новини", url: "news.html" },
-    { title: "Контакти", url: "contact.html" }
-  ]);
-});
-
 app.get('/api/news', (req, res) => {
   res.json(news);
 });
