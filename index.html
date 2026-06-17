@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спортивні заходи в Україні</title>
+    <!-- Подключаем Bootstrap для красоты -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .carousel-inner {
+            height: 300px; /* Фиксируем высоту карусели */
+        }
+        .carousel-item img {
+            height: 300px; /* Фиксируем высоту */
+            object-fit: cover; /* Обрезает лишнее, сохраняя пропорции */
+            object-position: center; /* Центрирует изображение */
+        }
+        /* Фиксируем футер внизу экрана */
+        .footer-revealer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: -1; /* Прячем футер ЗА контентом */
+            transition: 0.5s ease-in-out; /* Плавность появления */
+        }
+
+        /* Контент должен быть "над" футером */
+        body {
+            margin-bottom: 200px; /* Высота футера, чтобы контент не перекрывался */
+            background-color: white; /* Фон страницы должен закрывать футер */
+            position: relative;
+            z-index: 1;
+        }
+        body, html {
+            overflow-x: hidden; /* Скрывает всё, что вылезает за ширину экрана */
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px); /* Карточка приподнимается */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Появляется тень */
+        }
+</style>
+</head>
+<body>
+
+            <!-- Шапка сайта -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Спорт-Портал</a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav" id="navbar-menu">
+                        <li class="nav-item"><a class="nav-link" href="about.html">Про цей сайт</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Галерея</a></li>
+                        <li class="nav-item"><a class="nav-link" href="news-detail.html">Новини</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+    
+                <div class="carousel-item active">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/8/8b/Lviv_Arena_Lviv_15.jpg" class="d-block w-100" alt="Футбол">
+                    <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,0.5); border-radius: 10px;">
+                        <h5>Чемпіонат України з футболу</h5>
+                        <p>Найзапекліші матчі сезону на головних стадіонах країни.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://i.fbu.kiev.ua/1/41677/0-%D1%84%D0%B1%D1%83-2025-%D0%BA%D1%83%D0%B1%D0%BE%D0%BA-%D1%84%D1%96%D0%BD%D0%B0%D0%BB-%D1%87%D0%BE%D1%82%D0%B8%D1%80%D1%8C%D0%BE%D1%85-%D1%81%D0%B0%D0%B8%CC%86%D1%82-%D0%BA%D0%BE%D0%BF%D1%96%D1%8F%20-2-.jpg" class="d-block w-100" alt="Баскетбол">
+                    <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,0.5); border-radius: 10px;">
+                        <h5>Фінал Кубка з баскетболу</h5>
+                        <p>Боротьба найкращих команд за звання чемпіона.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://lh6.googleusercontent.com/9hVGLB5i6IQVZZZTWgLMOciNtLCY0mOmZdQcG1IuieDmbUkFisWCkDIso67vavN7V0tb5QviULjRCymsOkk6wBL-YXqmMuROuO4cFEzwFN2QClQgp1RVbu4aLdjh4flJLEcBe_RHnieY653pAGv32c8" class="d-block w-100" alt="Марафон">
+                    <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,0.5); border-radius: 10px;">
+                        <h5>Київський марафон</h5>
+                        <p>Тисячі учасників біжать заради благодійної мети.</p>
+                    </div>
+                </div>
+
+            </div>
+  
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+    <!-- Основной контент -->
+    <div class="container mt-5">
+        <h1>Ласкаво просимо на портал спортивних подій!</h1>
+        <p>Тут ви знайдете найактуальнішу інформацію про спорт в Україні.</p>
+    </div>
+
+    <div class="row mt-4 justify-content-center g-3" id="news-container">
+
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Завантаження...</span>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Новина 1</h5>
+                    <p class="card-text">Опис спортивної події...</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Новина 2</h5>
+                    <p class="card-text">Опис спортивної події...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключаем скрипты Bootstrap (нужны для работы меню) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <footer class="footer-revealer bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p>&copy; 2026 Спортивний Портал України.</p>
+            <p>Створено як навчальний проект для РГР.</p>
+        </div>
+    </footer>
+
+<script>
+    fetch('http://localhost:3000/api/news')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('news-container');
+            container.innerHTML = ''; 
+
+            // Добавляем , index сюда:
+            data.forEach((item, index) => {
+                const card = `
+                    <div class="col-md-4">
+                        <div class="card h-100 clickable-card" onclick="openNews(${index})">
+                            <div class="card-body">
+                                <h5 class="card-title">${item.title}</h5>
+                                <p class="card-text">${item.text}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        })
+        .catch(error => console.error('Помилка:', error));
+
+    function openNews(index) {
+        window.location.href = `news-detail.html?id=${index}`;
+    }
+    // Загрузка меню
+    fetch('http://localhost:3000/api/menu')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Помилка мережі');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const menuContainer = document.getElementById('navbar-menu');
+            menuContainer.innerHTML = ''; // Очищаем текущее содержимое
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'nav-item';
+                li.innerHTML = `<a class="nav-link" href="${item.url}">${item.title}</a>`;
+                menuContainer.appendChild(li);
+            });
+        })
+        .catch(error => console.error('Помилка завантаження меню:', error));
+</script>
+</body>
+</html>
