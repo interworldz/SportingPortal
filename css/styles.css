@@ -23,9 +23,14 @@
     color: white;
 }
 
-.footer-revealer {
+.site-footer {
+    font-size: 0.9rem;
+    padding: 0.9rem 0;
     width: 100%;
-    transition: 0.5s ease-in-out;
+}
+
+.site-footer p {
+    margin-bottom: 0.2rem;
 }
 
 .index-page {
@@ -34,7 +39,18 @@
 
 body,
 html {
+    min-height: 100%;
     overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 .card {
